@@ -1,4 +1,4 @@
 # LP-2020/2
 
-Repoistório para a disciplina Lingugens de Programação, Turma B da Universidade de Brasília.
+Repositório para a disciplina Linguagens de Programação, Turma B da Universidade de Brasília.
 
