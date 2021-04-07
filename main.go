@@ -4,7 +4,7 @@ import (
     "fmt"
 )
 
-func main(){
+func testDs(){
     fmt.Println("Loading data...")
     sq :=loadDataset("squares.csv")
     //fmt.Println(sq)
@@ -32,4 +32,13 @@ func main(){
 
     fmt.Println("Total orange:", len(orange.data))
     fmt.Println("Total blue:", sq.count(func (entry *line) bool {return entry.getColumn("colour")=="blue"}))
+}
+
+func testNet(){
+    serve(":8080")
+}
+
+func main(){
+    testDs()
+    testNet()
 }
