@@ -8,3 +8,6 @@ Repositório para a disciplina Linguagens de Programação, Turma B da Universid
     * Minimização de entropia (numérico)
 * Decisão de melhor quebra - Bruno
 * Juntar as quebras - Amélia
+
+### Link para o guia de implementação
+https://github.com/m3101/C4.5-Tree-Forest-Classifier-Implementation-Guide
