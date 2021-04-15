@@ -182,7 +182,8 @@ func loadDataset(filename string) *dataset{
             col_order:&col_order}
         ds_lines[i]=&nl
         j:=0
-        for _,indexer := range cols{
+        for column := range lines[0]{
+            indexer := cols[lines[0][column]]
             if indexer.is_numerical{
                 f64,_ := strconv.ParseFloat(l[j],32)
                 ds_lines[i].num[indexer.index] = float32(f64)

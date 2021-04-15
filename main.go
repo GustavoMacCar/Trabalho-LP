@@ -13,7 +13,7 @@ func testDs(){
     fmt.Println("\n")
 
     fmt.Println("First 5 lines' \"x\" column")
-    fmt.Println(sq.getColumn("x")[:5],"\n")
+    fmt.Println(sq.getColumn("colour")[:5],"\n")
 
     fmt.Println("First line:\n")
     sq.data[0].print()
