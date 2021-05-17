@@ -3,12 +3,12 @@ Gustavo
 */
 package main
 
-import (
-	"errors"
-	//"fmt"
-)
+import "errors"
 
-func minimum_num_attribute_entropy(ds *dataset, label_column string, attribute string) (float32, float32, error) {
+//"fmt"
+
+func minimum_num_attribute_entropy(ds *dataset, label_column string, attribute string) (float64, float32, error) {
+
 	if !ds.columns[attribute].is_numerical {
 		return -1, -1, errors.New("attribute is not numerical")
 	}
@@ -62,5 +62,6 @@ func minimum_num_attribute_entropy(ds *dataset, label_column string, attribute s
 	}
 
 	return entropy_gt, threshold_gt, nil
+	//return 0, 0, nil
 
 }
