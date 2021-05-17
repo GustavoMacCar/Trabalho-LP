@@ -4,7 +4,6 @@ Daniel
 package main
 
 import (
-	"fmt"
 	"math"
 )
 
@@ -45,7 +44,7 @@ func set_entropy(ds *dataset, attribute string) float64 {
 
 	}
 
-	fmt.Println(entropy)
+	//fmt.Println(entropy)
 
 	return entropy
 }
