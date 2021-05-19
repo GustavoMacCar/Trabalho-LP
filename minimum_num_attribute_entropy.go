@@ -7,7 +7,7 @@ import "errors"
 
 //"fmt"
 
-func minimum_num_attribute_entropy(ds *dataset, label_column string, attribute string) (float64, float32, error) {
+func minimum_num_attribute_entropy(ds *dataset, label_column string, attribute string) (float64, float64, error) {
 
 	if !ds.columns[attribute].is_numerical {
 		return -1, -1, errors.New("attribute is not numerical")
@@ -18,16 +18,16 @@ func minimum_num_attribute_entropy(ds *dataset, label_column string, attribute s
 	min_attribute_value := attribute_values[0]
 	max_attribute_value := attribute_values[0]
 	for _, v := range attribute_values {
-		if v.(float32) < min_attribute_value.(float32) {
+		if v.(float64) < min_attribute_value.(float64) {
 			min_attribute_value = v
 		}
 
-		if v.(float32) > max_attribute_value.(float32) {
+		if v.(float64) > max_attribute_value.(float64) {
 			max_attribute_value = v
 		}
 	}
 
-	initial_threshold := (min_attribute_value.(float32) + max_attribute_value.(float32)) / 2
+	initial_threshold := (min_attribute_value.(float64) + max_attribute_value.(float64)) / 2
 
 	initial_entropy, _ := num_attribute_entropy(ds, label_column, attribute, initial_threshold)
 

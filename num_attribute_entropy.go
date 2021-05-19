@@ -8,14 +8,14 @@ import (
 	"errors"
 )
 
-func num_attribute_entropy(ds *dataset, label_column string, attribute string, threshhold float32) (float64, error) {
+func num_attribute_entropy(ds *dataset, label_column string, attribute string, threshhold float64) (float64, error) {
 	if !ds.columns[attribute].is_numerical {
 		return -1, errors.New("attribute is not numerical")
 	}
 
-	below := ds.filter(func(entry *line) bool { return entry.getColumn(attribute).(float32) < threshhold })
+	below := ds.filter(func(entry *line) bool { return entry.getColumn(attribute).(float64) < threshhold })
 
-	above := ds.filter(func(entry *line) bool { return entry.getColumn(attribute).(float32) >= threshhold })
+	above := ds.filter(func(entry *line) bool { return entry.getColumn(attribute).(float64) >= threshhold })
 
 	//entropy_below := set_entropy(below.getColumn(label_column))
 	entropy_below := set_entropy(below, label_column)

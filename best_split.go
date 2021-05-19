@@ -1,5 +1,9 @@
 package main
 
+import (
+	"math"
+)
+
 func bestSplit(ds *dataset, label_column string) (string, float64, float64) {
 	/*
 
@@ -54,12 +58,12 @@ func bestSplit(ds *dataset, label_column string) (string, float64, float64) {
 	}
 
 	var entropies []float64
-	var thresholds []float32
+	var thresholds []float64
 	for _, attribute := range attributes {
-		if !ds.columns[label_column].is_numerical {
+		if !ds.columns[attribute].is_numerical {
 			current_entropy, _ := attribute_entropy(ds, label_column, attribute)
 			entropies = append(entropies, current_entropy)
-			thresholds = append(thresholds, 0)
+			thresholds = append(thresholds, float64(math.Inf(-1)))
 		} else {
 			entropy, threshold, _ := minimum_num_attribute_entropy(ds, label_column, attribute)
 			entropies = append(entropies, entropy)
@@ -82,7 +86,7 @@ func bestSplit(ds *dataset, label_column string) (string, float64, float64) {
 	}
 
 	var final_attribute string
-	var final_threshold float32
+	var final_threshold float64
 
 	final_attribute = attributes[index]
 	final_threshold = thresholds[index]

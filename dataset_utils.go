@@ -16,7 +16,7 @@ import (
 Dataset types
 */
 type line struct {
-	num       []float32
+	num       []float64
 	str       []string
 	cols      *map[string]column_indexer
 	col_order *[]string
@@ -176,7 +176,7 @@ func loadDataset(filename string) *dataset {
 	/*Loading lines*/
 	for i, l := range lines[1:] {
 		nl := line{
-			num:       make([]float32, num_index),
+			num:       make([]float64, num_index),
 			str:       make([]string, cat_index),
 			cols:      &cols,
 			col_order: &col_order}
@@ -186,7 +186,7 @@ func loadDataset(filename string) *dataset {
 			indexer := cols[lines[0][column]]
 			if indexer.is_numerical {
 				f64, _ := strconv.ParseFloat(l[j], 32)
-				ds_lines[i].num[indexer.index] = float32(f64)
+				ds_lines[i].num[indexer.index] = float64(f64)
 			} else {
 				ds_lines[i].str[indexer.index] = l[j]
 			}
