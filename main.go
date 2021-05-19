@@ -2,11 +2,12 @@ package main
 
 import (
 	"fmt"
+	"os"
 )
 
 func testDs() {
 	fmt.Println("Loading data...")
-	sq := loadDataset("squares.csv")
+	sq := loadDataset(os.Args[1])
 	//fmt.Println(sq)
 	fmt.Println("First 5 lines of the dataset:")
 	sq.print(5)
@@ -32,13 +33,13 @@ func testDs() {
 
 	fmt.Println("Total orange:", len(orange.data))
 	fmt.Println("Total blue:", sq.count(func(entry *line) bool { return entry.getColumn("colour") == "blue" }))
+}
 
+func main() {
+	//testDs()
+	sq := loadDataset(os.Args[1])
 	res := make(chan *tree)
 	go generate_tree(sq, "colour", 0.4, 2, 0, res)
 	classifier := <-res
 	print_tree(classifier, 0)
-}
-
-func main() {
-	testDs()
 }
