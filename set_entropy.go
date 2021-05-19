@@ -26,10 +26,8 @@ func set_entropy(ds *dataset, attribute string) float64 {
 		return entropy */
 
 	var categories []string
-	var entropy float64
-	var total float64
-
-	entropy = 0
+	var entropy float64 = 0
+	var total float64 = 0
 
 	for _, e := range ds.data {
 		if !contains(categories, e.getColumn(attribute).(string)) {
@@ -41,7 +39,6 @@ func set_entropy(ds *dataset, attribute string) float64 {
 	for _, e := range categories {
 		current_category_count := float64(ds.count(func(entry *line) bool { return entry.getColumn(attribute) == e }))
 		entropy += -math.Log2(current_category_count/total) * current_category_count / total
-
 	}
 
 	//fmt.Println(entropy)
